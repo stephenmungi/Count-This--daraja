@@ -4,10 +4,10 @@ const cors = require('cors');
 const app = express();
 app.use(cors());
 app.use(express.json());
-const CONSUMER_KEY = "9vU0PzmJXQGLiAgadG8u9kg1G18DKiKlPx5Mso5ezE6ih6li";
-const CONSUMER_SECRET = "wrL0kzn8t3v10LAWbm5zTr14MvfBpDFXI6Geckb26FCuap4LJTXniZ8gMIv4x9La";
-const SHORTCODE = "174379";
-const PASSKEY = "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919";
+const CONSUMER_KEY = process.env.CONSUMER_KEY;
+const CONSUMER_SECRET = process.env.CONSUMER_SECRET;
+const SHORTCODE = process.env.SHORTCODE;
+const PASSKEY = process.env.PASSKEY;
 async function getToken() {
   const auth = Buffer.from(CONSUMER_KEY + ":" + CONSUMER_SECRET).toString('base64');
   const res = await axios.get('https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials', { headers: { Authorization: 'Basic ' + auth } });
