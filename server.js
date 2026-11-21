@@ -10,7 +10,7 @@ const SHORTCODE = process.env.SHORTCODE;
 const PASSKEY = process.env.PASSKEY;
 async function getToken() {
   const auth = Buffer.from(CONSUMER_KEY + ":" + CONSUMER_SECRET).toString('base64');
-  const res = await axios.get('https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials', { headers: { Authorization: 'Basic ' + auth } });
+  const res = await axios.get('https://api.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials', { headers: { Authorization: 'Basic ' + auth } });
   return res.data.access_token;
 }
 app.get('/', (req, res) => res.send('Count This Daraja Server is Running!'));
